@@ -1,0 +1,45 @@
+import styled from 'styled-components';
+
+export const StyledRegister = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  height: 100vh;
+  width: 100%;
+  margin: 0;
+
+  h1 {
+    font-size: 36px;
+    text-align: center;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 20px;
+  }
+
+  form >div >label{
+    display: block;
+    margin-bottom: 2px;
+    font-weight: medium;
+
+  }
+  form > div >  input {
+    border: 2px solid;
+    padding: 8px;
+    border-radius:10px;
+  }
+
+  form >  div > input:focus {
+    outline: none;
+  }
+
+  form > button {
+    border: 5px solid;
+    padding: 8px;
+  }
+`;
