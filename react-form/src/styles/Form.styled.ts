@@ -6,7 +6,7 @@ export const StyledRegister = styled.div`
   align-items: center;
   justify-content: center;
   gap: 20px;
-  height: 100vh;
+  height: 100%;
   width: 100%;
   margin: 0;
 

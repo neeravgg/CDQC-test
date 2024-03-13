@@ -73,8 +73,8 @@ const User = () => {
 	}, []);
 
 	return (
-		<div className='flex justify-center'>
-			<CommonForm fields={formFields} onSubmit={onSubmit} />
+		<div className='flex justify-center h-100 mt-40'>
+			<CommonForm formTitle='User' fields={formFields} onSubmit={onSubmit} />
 		</div>
 	);
 };

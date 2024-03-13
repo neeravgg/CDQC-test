@@ -1,100 +1,62 @@
 'use client';
+import { useAppSelector } from '@/redux/store';
 import { ButtonAnimatedStyles } from '@/styles/ButtonAnimated.styled';
+import { StyledCard } from '@/styles/Card.style';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 
 export default function Home() {
 	const router = useRouter();
+	const { isUserCompleted, userData } = useAppSelector((state) => state.user);
+
 	const handleCreate = () => {
 		router.push('/user');
 	};
+	const RouteFamily = () => {
+		router.push('/family');
+	};
+
 	return (
-		<main className='flex min-h-screen flex-col items-center justify-between p-24'>
+		<main className='flex gap-20 min-h-screen flex-col items-start p-24 '>
 			<ButtonAnimatedStyles>
 				<button className='create create-btn' onClick={handleCreate}>
 					Create
 				</button>
 			</ButtonAnimatedStyles>
 
-			<div className='relative flex place-items-center before:absolute before:h-[300px] before:w-full sm:before:w-[480px] before:-translate-x-1/2 before:rounded-full   before:lg:h-[360px] z-[-1]'>
-				<Image
-					className='relative '
-					src='/no-results.png'
-					alt='no result'
-					width={180}
-					height={37}
-					priority
-				/>
-			</div>
-
-			<div className='mb-32 grid text-center lg:max-w-5xl lg:w-full lg:mb-0 lg:grid-cols-4 lg:text-left'>
-				<a
-					href='https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app'
-					className='group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30'
-					target='_blank'
-					rel='noopener noreferrer'
-				>
-					<h2 className={`mb-3 text-2xl font-semibold`}>
-						Docs{' '}
-						<span className='inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none'>
-							-&gt;
-						</span>
-					</h2>
-					<p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-						Find in-depth information about Next.js features and API.
-					</p>
-				</a>
-
-				<a
-					href='https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app'
-					className='group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30'
-					target='_blank'
-					rel='noopener noreferrer'
-				>
-					<h2 className={`mb-3 text-2xl font-semibold`}>
-						Learn{' '}
-						<span className='inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none'>
-							-&gt;
-						</span>
-					</h2>
-					<p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-						Learn about Next.js in an interactive course with&nbsp;quizzes!
-					</p>
-				</a>
-
-				<a
-					href='https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app'
-					className='group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30'
-					target='_blank'
-					rel='noopener noreferrer'
-				>
-					<h2 className={`mb-3 text-2xl font-semibold`}>
-						Templates{' '}
-						<span className='inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none'>
-							-&gt;
-						</span>
-					</h2>
-					<p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-						Explore starter templates for Next.js.
-					</p>
-				</a>
-
-				<a
-					href='https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app'
-					className='group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30'
-					target='_blank'
-					rel='noopener noreferrer'
-				>
-					<h2 className={`mb-3 text-2xl font-semibold`}>
-						Deploy{' '}
-						<span className='inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none'>
-							-&gt;
-						</span>
-					</h2>
-					<p className={`m-0 max-w-[30ch] text-sm opacity-50 text-balance`}>
-						Instantly deploy your Next.js site to a shareable URL with Vercel.
-					</p>
-				</a>
+			<div className='flex flex-col gap-5 justify-center items-center w-full '>
+				{isUserCompleted ? (
+					<>
+						<StyledCard>
+							<div className='card-wrapper'>
+								<div className='card-title'>User Details</div>
+								<div className='card-content'>
+									<span>Name - {userData.first_name + ' ' + userData.last_name}</span>
+									<span>Email - {userData.email}</span>
+									<span>Phone - {userData.phone_number}</span>
+									<span>Address - {userData.address}</span>
+								</div>
+							</div>
+						</StyledCard>
+						<ButtonAnimatedStyles>
+							<button className='create create-btn' onClick={RouteFamily}>
+								Family
+							</button>
+						</ButtonAnimatedStyles>
+					</>
+				) : (
+					<>
+						<Image
+							className='relative '
+							src='/no-results.png'
+							alt='no result'
+							width={150}
+							height={150}
+							priority
+						/>
+						<span>No user, create one</span>
+					</>
+				)}
 			</div>
 		</main>
 	);

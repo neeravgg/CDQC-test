@@ -14,12 +14,13 @@ interface Field {
 	validation: z.Schema;
 }
 interface ModularFormProps {
+	formTitle: string;
 	fields: Field[];
 	onSubmit: (data: Record<string, any>) => void;
 }
 const defaultFieldSchema = z.string();
 
-const CommonForm: FC<ModularFormProps> = ({ fields, onSubmit }) => {
+const CommonForm: FC<ModularFormProps> = ({ formTitle, fields, onSubmit }) => {
 	const {
 		register,
 		handleSubmit,
@@ -42,7 +43,7 @@ const CommonForm: FC<ModularFormProps> = ({ fields, onSubmit }) => {
 	return (
 		<StyledRegister>
 			<section className='heading'>
-				<h1>User</h1>
+				<h1>{formTitle}</h1>
 			</section>
 			<section className=''>
 				<form onSubmit={handleSubmit(processForm)} className=''>

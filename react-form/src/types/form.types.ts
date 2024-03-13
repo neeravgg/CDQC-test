@@ -6,8 +6,8 @@ export interface userFormInterface {
     address: string
 }
 export interface familyFormInterface {
-    member_name: string,
+    member_first_name: string,
+    member_last_name: string,
     relation: string,
-    email: string,
-    phone_number: string,
+    member_email: string,
 }
