@@ -40,7 +40,7 @@ export default function Home() {
 						</StyledCard>
 						<ButtonAnimatedStyles>
 							<button className='create create-btn' onClick={RouteFamily}>
-								View Family
+								Family
 							</button>
 						</ButtonAnimatedStyles>
 					</>

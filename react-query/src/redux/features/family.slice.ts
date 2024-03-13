@@ -19,7 +19,7 @@ export const familySlice = createSlice({
             state.familyData.push(action.payload)
         },
         deleteFamilyMember: (state, action: PayloadAction<number>) => {
-            if (state.familyData.length > 1 && action.payload >= 0 && action.payload < state.familyData.length) {
+            if (action.payload >= 0 && action.payload < state.familyData.length) {
                 state.familyData.splice(action.payload, 1);
             }
         }

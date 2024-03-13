@@ -8,10 +8,7 @@ import { familyFormInterface, userFormInterface } from '@/types/form.types';
 import Modal from 'react-modal';
 import { ButtonAnimatedStyles } from '@/styles/ButtonAnimated.styled';
 import Accordion from '../component/Accordian';
-import {
-	addFamilyMember,
-	deleteFamilyMember,
-} from '@/redux/features/family.slice';
+import { addFamilyMember } from '@/redux/features/family.slice';
 import { useRouter } from 'next/navigation';
 
 const formFields = [
@@ -68,10 +65,6 @@ const Family = () => {
 		setIsOpen(false);
 	}
 
-	function deleteFamily(id: number) {
-		dispatch(deleteFamilyMember(id));
-	}
-
 	const onSubmit = (data: Record<string, any>) => {
 		const familtData = data as familyFormInterface;
 		dispatch(addFamilyMember(familtData));
@@ -80,11 +73,11 @@ const Family = () => {
 
 	// side effects
 
-	useEffect(() => {
-		if (!isUserCompleted) {
-			router.push('/user');
-		}
-	}, []);
+	// useEffect(() => {
+	// 	if (!isUserCompleted) {
+	// 		router.push('/user');
+	// 	}
+	// }, []);
 
 	return (
 		<div className='flex gap-20 min-h-screen flex-col items-start p-24 '>
@@ -104,10 +97,6 @@ const Family = () => {
 							height={16}
 							xmlns='http://www.w3.org/2000/svg'
 							viewBox='0 0 448 512'
-							className=''
-							style={{ transition: 'fill 0.3s', fill: 'currentColor' }}
-							onMouseOver={(e) => (e.currentTarget.style.fill = '#000')}
-							onMouseOut={(e) => (e.currentTarget.style.fill = 'currentColor')}
 						>
 							<path d='M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.2 288 416 288c17.7 0 32-14.3 32-32s-14.3-32-32-32l-306.7 0L214.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z' />
 						</svg>
@@ -150,23 +139,6 @@ const Family = () => {
 							</span>
 							<span>Relationship - {item.relation}</span>
 							<span>Email - {item.member_email}</span>
-							<div className='flex w-full justify-end'>
-								<svg
-									width={20}
-									height={20}
-									xmlns='http://www.w3.org/2000/svg'
-									viewBox='0 0 448 512'
-									fill='red'
-									className={` ${
-										familyData?.length <= 1
-											? ' opacity-50 cursor-not-allowed'
-											: 'cursor-pointer'
-									}`}
-									{...(familyData?.length > 1 && { onClick: () => deleteFamily(id) })}
-								>
-									<path d='M135.2 17.7L128 32H32C14.3 32 0 46.3 0 64S14.3 96 32 96H416c17.7 0 32-14.3 32-32s-14.3-32-32-32H320l-7.2-14.3C307.4 6.8 296.3 0 284.2 0H163.8c-12.1 0-23.2 6.8-28.6 17.7zM416 128H32L53.2 467c1.6 25.3 22.6 45 47.9 45H346.9c25.3 0 46.3-19.7 47.9-45L416 128z' />
-								</svg>
-							</div>
 						</div>
 					</Accordion>
 				))}
