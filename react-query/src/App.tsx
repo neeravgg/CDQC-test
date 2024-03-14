@@ -1,7 +1,6 @@
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
 import Dashboard from './pages/Dashboard';
-import { ReduxProvider } from './redux/provider';
 
 const queryClient = new QueryClient({
 	defaultOptions: {
@@ -14,9 +13,7 @@ const queryClient = new QueryClient({
 function App() {
 	return (
 		<QueryClientProvider client={queryClient}>
-			<ReduxProvider>
-				<Dashboard />
-			</ReduxProvider>
+			<Dashboard />
 		</QueryClientProvider>
 	);
 }

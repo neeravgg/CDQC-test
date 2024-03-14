@@ -43,6 +43,7 @@ export const StyledCard = styled.div`
 
 .card p {
   color: #777;
+  font-size: 0.75em;
 }
 
 .card h5 {

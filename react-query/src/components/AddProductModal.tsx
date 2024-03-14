@@ -6,9 +6,6 @@ import { ButtonAnimatedStyles } from '../styles/ButtonAnimated.styled';
 import CommonForm from './Common/Common.Form';
 import { z } from 'zod';
 import { FetchProduct, Product } from '../types/Product';
-import { useDispatch } from 'react-redux';
-import { AppDispatch } from '../redux/store';
-import { addProduct } from '../redux/features/product.slice';
 
 const formFields = [
 	{
@@ -55,7 +52,6 @@ const formFields = [
 	},
 ];
 const AddProductModal = () => {
-	const dispatch = useDispatch<AppDispatch>();
 	const queryClient = useQueryClient();
 	const [modalIsOpen, setIsOpen] = useState(false);
 	const { mutateAsync: addProductMutation } = useMutation({

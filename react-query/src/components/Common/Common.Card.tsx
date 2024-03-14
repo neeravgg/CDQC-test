@@ -11,13 +11,15 @@ const Card: FC<CardProps> = ({ details }) => {
 			<div className='card'>
 				<img src={details.thumbnail} />
 				<div className='card-body'>
-					<h2>{details.title}</h2>
-					<p>
-						Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-						tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-						veniam.
-					</p>
-					<h5>{details.description}</h5>
+					<div className=' flex justify-between'>
+						<h2>{details.title}</h2>
+						<h2 className=' font-bold'>$ {details.price}</h2>
+					</div>
+					<div className='mt-2'>
+						<p>{details.brand}</p>
+						<p className=' capitalize'>{details.category}</p>
+					</div>
+					<h5 className=' text-center'>{details.description}</h5>
 				</div>
 			</div>
 		</StyledCard>
