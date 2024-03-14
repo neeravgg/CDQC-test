@@ -1,5 +1,3 @@
-'use client';
-
 import { FC, ReactNode, useState } from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -63,7 +61,7 @@ const CommonForm: FC<ModularFormProps> = ({ formTitle, fields, onSubmit }) => {
 								<input
 									type='number'
 									placeholder={field.placeholder || field.name}
-									{...register(field.name)}
+									{...register(field.name, { valueAsNumber: true })}
 								/>
 							) : field.type === 'phone' ? (
 								<input

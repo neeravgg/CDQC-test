@@ -2,36 +2,60 @@ import styled from "styled-components";
 
 export const StyledCard = styled.div`
   
-  .card-wrapper {
-    width: 100vh;
-    border: solid 1px #ccc;
-  
-  }
-  
-  .card-item {
-    overflow: hidden;
-    transition: max-height 0.3s cubic-bezier(1, 0, 1, 0);
-    height: auto;
-    max-height: 9999px;
-  }
-  
-  
-  .card-title {
-    font-weight: 600;
-    cursor: pointer;
-    color: #666;
-    padding: 0.5em 1.5em;
-    border-bottom: solid 1px #ccc;
-    display: flex;
+.cards {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
     justify-content: center;
-    align-items: center;
-  
-  }
-  
-  .card-content {
-    display: flex;
-    flex-direction: column;
-    padding: 1em 1.5em;
-  }
+}
+
+.card {
+  background: #fff;
+  width: 24em;
+  border-radius: 0.6em;
+  margin: 1em;
+  overflow: hidden;
+  cursor: pointer;
+  box-shadow: 0 13px 27px -5px hsla(240, 30.1%, 28%, 0.25), 0 8px 16px -8px hsla(0, 0%, 0%, 0.3), 0 -6px 16px -6px hsla(0, 0%, 0%, 0.03);
+  transition: all ease 200ms;
+}
+
+.card:hover {
+  transform: scale(1.03);
+  box-shadow: 0 13px 40px -5px hsla(240, 30.1%, 28%, 0.12), 0 8px 32px -8px hsla(0, 0%, 0%, 0.14), 0 -6px 32px -6px hsla(0, 0%, 0%, 0.02);
+}
+
+.card img {
+  width: 100%;
+  height: 20rem;
+  object-fit: cover;
+}
+
+.card h2 {
+  color: #222;
+  margin-top: -0.2em;
+  line-height: 1.4;
+  font-size: 1.3em;
+  font-weight: 500;
+  font-family: 'Montserrat', sans-serif;
+  transition: all ease-in 100ms;
+}
+
+.card p {
+  color: #777;
+}
+
+.card h5 {
+  color: #bbb;
+  font-weight: 700;
+  font-size: 0.7em;
+  letter-spacing: 0.04em;
+  margin: 1.4em 0 0 0;
+  text-transform: uppercase;
+}
+
+.card-body {
+  padding: 1.2em;
+}
   
 `

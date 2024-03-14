@@ -1,12 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit";
-import userReducer from './features/user.slice'
-import familyReducer from './features/family.slice'
+import productReducer from './features/product.slice'
+
 import { TypedUseSelectorHook, useSelector } from "react-redux";
 
 export const store = configureStore({
     reducer: {
-        user: userReducer,
-        family: familyReducer
+        product: productReducer,
     }
 })
 
