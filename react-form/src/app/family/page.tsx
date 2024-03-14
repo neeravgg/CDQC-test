@@ -6,13 +6,13 @@ import CommonForm from '../component/Common.Form';
 import { z } from 'zod';
 import { familyFormInterface, userFormInterface } from '@/types/form.types';
 import Modal from 'react-modal';
-import { ButtonAnimatedStyles } from '@/styles/ButtonAnimated.styled';
 import Accordion from '../component/Accordian';
 import {
 	addFamilyMember,
 	deleteFamilyMember,
 } from '@/redux/features/family.slice';
 import { useRouter } from 'next/navigation';
+import '@/styles/Button.style.css';
 
 const formFields = [
 	{
@@ -89,31 +89,27 @@ const Family = () => {
 	return (
 		<div className='flex gap-20 min-h-screen flex-col items-start p-24 '>
 			<div className='flex justify-between w-full'>
-				<ButtonAnimatedStyles>
-					<button className='create create-btn' onClick={openModal}>
-						Add Member
-					</button>
-				</ButtonAnimatedStyles>
-				<ButtonAnimatedStyles>
-					<button
-						className='create create-btn flex justify-center items-center gap-2'
-						onClick={routeHome}
+				<button className='create create-btn' onClick={openModal}>
+					Add Member
+				</button>
+				<button
+					className='create create-btn flex justify-center items-center gap-2'
+					onClick={routeHome}
+				>
+					<svg
+						width={16}
+						height={16}
+						xmlns='http://www.w3.org/2000/svg'
+						viewBox='0 0 448 512'
+						className=''
+						style={{ transition: 'fill 0.3s', fill: 'currentColor' }}
+						onMouseOver={(e) => (e.currentTarget.style.fill = '#000')}
+						onMouseOut={(e) => (e.currentTarget.style.fill = 'currentColor')}
 					>
-						<svg
-							width={16}
-							height={16}
-							xmlns='http://www.w3.org/2000/svg'
-							viewBox='0 0 448 512'
-							className=''
-							style={{ transition: 'fill 0.3s', fill: 'currentColor' }}
-							onMouseOver={(e) => (e.currentTarget.style.fill = '#000')}
-							onMouseOut={(e) => (e.currentTarget.style.fill = 'currentColor')}
-						>
-							<path d='M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.2 288 416 288c17.7 0 32-14.3 32-32s-14.3-32-32-32l-306.7 0L214.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z' />
-						</svg>
-						<span>Go Home</span>
-					</button>
-				</ButtonAnimatedStyles>
+						<path d='M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.2 288 416 288c17.7 0 32-14.3 32-32s-14.3-32-32-32l-306.7 0L214.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z' />
+					</svg>
+					<span>Go Home</span>
+				</button>
 			</div>
 
 			<Modal

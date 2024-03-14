@@ -1,9 +1,10 @@
 'use client';
 import { useAppSelector } from '@/redux/store';
-import { ButtonAnimatedStyles } from '@/styles/ButtonAnimated.styled';
-import { StyledCard } from '@/styles/Card.style';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
+import { useEffect } from 'react';
+import '@/styles/Card.style.css';
+import '@/styles/Button.style.css';
 
 export default function Home() {
 	const router = useRouter();
@@ -15,34 +16,30 @@ export default function Home() {
 	const RouteFamily = () => {
 		router.push('/family');
 	};
-
+	// useEffect(() => {
+	// 	window.location.reload();
+	// }, []);
 	return (
 		<main className='flex gap-20 min-h-screen flex-col items-start p-24 '>
-			<ButtonAnimatedStyles>
-				<button className='create create-btn' onClick={handleCreate}>
-					Create
-				</button>
-			</ButtonAnimatedStyles>
+			<button className='create create-btn' onClick={handleCreate}>
+				Create
+			</button>
 
 			<div className='flex flex-col gap-5 justify-center items-center w-full '>
 				{isUserCompleted ? (
 					<>
-						<StyledCard>
-							<div className='card-wrapper'>
-								<div className='card-title'>User Details</div>
-								<div className='card-content'>
-									<span>Name - {userData.first_name + ' ' + userData.last_name}</span>
-									<span>Email - {userData.email}</span>
-									<span>Phone - {userData.phone_number}</span>
-									<span>Address - {userData.address}</span>
-								</div>
+						<div className='card-wrapper'>
+							<div className='card-title'>User Details</div>
+							<div className='card-content'>
+								<span>Name - {userData.first_name + ' ' + userData.last_name}</span>
+								<span>Email - {userData.email}</span>
+								<span>Phone - {userData.phone_number}</span>
+								<span>Address - {userData.address}</span>
 							</div>
-						</StyledCard>
-						<ButtonAnimatedStyles>
-							<button className='create create-btn' onClick={RouteFamily}>
-								View Family
-							</button>
-						</ButtonAnimatedStyles>
+						</div>
+						<button className='create create-btn' onClick={RouteFamily}>
+							View Family
+						</button>
 					</>
 				) : (
 					<>

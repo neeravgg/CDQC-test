@@ -4,7 +4,7 @@ import { FC, ReactNode, useState } from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
-import { StyledRegister } from '../../styles/Form.styled';
+import '@/styles/Form.style.css';
 
 interface Field {
 	name: string;
@@ -41,7 +41,7 @@ const CommonForm: FC<ModularFormProps> = ({ formTitle, fields, onSubmit }) => {
 	};
 
 	return (
-		<StyledRegister>
+		<div className='register'>
 			<section className='heading'>
 				<h1>{formTitle}</h1>
 			</section>
@@ -88,7 +88,7 @@ const CommonForm: FC<ModularFormProps> = ({ formTitle, fields, onSubmit }) => {
 					<button className='rounded-lg bg-black py-2 text-white'>Submit</button>
 				</form>
 			</section>
-		</StyledRegister>
+		</div>
 	);
 };
 
